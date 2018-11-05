@@ -11,11 +11,7 @@
 
 <style lang="scss">
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
-
-#logo {
-  height: 5%;
-  width: 5%;
-}
+#logo { height: 50px;}
 </style>
 
 <script>
