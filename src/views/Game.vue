@@ -88,6 +88,9 @@ export default {
     },
     created: function(){
         loopTimer = setInterval(this.refresh, 1000);
+        if(api.playerId !== null && this.myCaptions.length == 0){
+            api.GetMyCaptions().then(x=> this.myCaptions = x);
+        }
     },
     methods: {
         refresh(){
