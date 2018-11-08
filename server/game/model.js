@@ -19,7 +19,7 @@ class Game {
 
     getPlayedCaptions(){
         if(this.playedCaptions.some(x=> x.isChosen)){
-            return  this.playedCaptions.map(x=> ({ ...x, playerName: this.players[x.playerId].name }));;
+            return  this.playedCaptions.map(x=> ({ ...x, playerName: this.players[x.playerId].name }));
         }else{
             return this.playedCaptions.map(x=> ({ ...x, playerId: null }));
         }
