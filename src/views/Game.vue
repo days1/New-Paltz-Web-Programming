@@ -75,6 +75,7 @@
 
 <script>
 import * as api from '@/services/api_access';
+import * as fb from '@/services/facebook';
 let loopTimer = null;
 
 export default {
@@ -103,8 +104,8 @@ export default {
             api.FlipPicture();
         },
         login() {
-            api.Login(prompt('What is your name?'))
-            .then(()=> api.GetMyCaptions().then(x=> this.myCaptions = x))
+            fb.FBLogin();
+            // .then(()=> api.GetMyCaptions().then(x=> this.myCaptions = x))
         },
         submitCaption(c){
             api.SubmitCaption(c)
