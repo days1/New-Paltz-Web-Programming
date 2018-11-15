@@ -15,7 +15,7 @@
                     <ul class="list-group list-group-flush">
                         <li v-for="p in state.players" :key="p.id"
                             class="list-group-item">
-                            <img />
+                            <img :src="`https://graph.facebook.com/${p.fbid}/picture`"/>
                             <h5>{{p.name}}</h5>
                             <span v-if="p.id == state.dealerId" class="badge badge-success">Dealer</span> &nbsp;
                             <span class="badge badge-primary badge-pill">{{p.score}}</span>
@@ -35,8 +35,11 @@
         <div class="col-md-4">
             <div class="card" >
                 <img class="card-img" :src="state.picture.url" :alt="state.picture.name">
-                <a @click.prevent="flipPicture" class="btn btn-primary">Flip Picture</a>
-
+                <div class="btn-group" role="group" aria-label="Basic">
+                    <button type="button" @click.prevent="flipPicture" class="btn btn-primary">Flip Picture</button>
+                    <button type="button" @click.prevent="getFBPictures" class="btn btn-secondary">From Facebook</button>
+                </div>
+                <img v-for="p in fbPictures" :src="p.picture"/>
             </div>
         </div>
         <div class="col-md-4">
@@ -86,7 +89,8 @@ export default {
                 players: [],
                 playedCaptions: [],
             },
-            myCaptions: []
+            myCaptions: [],
+            fbPictures: [],
         }
     },
     created: function(){
@@ -99,6 +103,9 @@ export default {
         refresh(){
             api.GetState()
             .then(x=> this.state = x)
+        },
+        getFBPictures(){
+            fb.GetPhotos(photos => this.fbPictures = photos.data);
         },
         flipPicture(){
             api.FlipPicture();

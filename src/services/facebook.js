@@ -1,36 +1,20 @@
-<<<<<<< HEAD
  import * as api from './api_access'
 
  window.fbAsyncInit = function() {
     FB.init({
       appId      : '229499281294300',
-=======
-import * as api from './api_access'
-
-window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '296547064527762',
->>>>>>> 4f727c37e4eea66f924e1fd2d530e4c7b5f8b455
       cookie     : true,
       xfbml      : true,
       version    : 'v3.0'
     });
       
     FB.AppEvents.logPageView();   
-<<<<<<< HEAD
 
     
     FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
+    //   statusChangeCallback(response);
     });
-      
-=======
-    
-    FB.getLoginStatus(function(response) {
-        statusChangeCallback(response);
-    });
->>>>>>> 4f727c37e4eea66f924e1fd2d530e4c7b5f8b455
-  };
+};
 
   (function(d, s, id){
      var js, fjs = d.getElementsByTagName(s)[0];
@@ -41,28 +25,24 @@ window.fbAsyncInit = function() {
    }(document, 'script', 'facebook-jssdk'));
 
    export function FBLogin(){
-<<<<<<< HEAD
-       FB.login(response => statusChangeCallback(response),
-       {scope: 'public_profile, email'})
-   }
-
-   function statusChangeCallback(response){
-       FB.api("/me", me => {
-            console.log(me);
-            api.Login(me.name, response.authResponse.userId, authResponse.accessToken);
-=======
        FB.login(
            response => statusChangeCallback(response),
-           {scope: 'public_profile,email'}
+           {scope: 'public_profile, email, user_photos'}
        )
+   }
+
+   export function GetPhotos(callback){
+       FB.api("/me/photos?fields= name, picture, images", photos => {
+           console.log(photos);
+           callback(photos);
+       })
    }
 
    function statusChangeCallback(response){
        console.log(response);
-       FB.api("/me", me => {
+       FB.api("/me?fields= name, email, birthday, picture", me => {
         console.log(me);
         api.Login(me.name, response.authResponse.userID, response.authResponse.accessToken)
 
->>>>>>> 4f727c37e4eea66f924e1fd2d530e4c7b5f8b455
        })
    }
