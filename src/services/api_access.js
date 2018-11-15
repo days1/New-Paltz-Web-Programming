@@ -8,29 +8,17 @@ export function GetMyCaptions(){
     return myFetch(api_root + `/captions/${playerId}`);
 }
 export function Login(name, fbid, access_token){
-<<<<<<< HEAD
     return myFetch(api_root + `/players`, { name: name, fbid: fbid, access_token: access_token })
-=======
-    return myFetch(api_root + `/players`, { name, fbid, access_token })
->>>>>>> 4f727c37e4eea66f924e1fd2d530e4c7b5f8b455
             .then(x=> playerId = x.id);
 }
 export function FlipPicture(){
     return myFetch(api_root + "/picture", {})
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 4f727c37e4eea66f924e1fd2d530e4c7b5f8b455
 export function SubmitCaption(c){
     return myFetch(api_root + "/playedCaptions", {text: c})
 }
 export function ChooseCaption(c){
-<<<<<<< HEAD
     return myFetch(api_root + "/playedCaptions/choose", {text: c.text})
-=======
-    return myFetch(api_root + "/playedCaptions/choose",  {text: c.text})
->>>>>>> 4f727c37e4eea66f924e1fd2d530e4c7b5f8b455
 }
 
 
