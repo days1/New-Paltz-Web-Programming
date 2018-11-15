@@ -45,9 +45,15 @@ class Game {
         this.dealerId = (this.dealerId + 1) % this.players.length;
     }
     login(name, fbid, access_token){
+<<<<<<< HEAD
         let player = this.players.find(x => x.fbid == fbid);
         if(!player){
             const player = new Player(name, this.players.length, fbid);
+=======
+        let player = this.players.find(x=> x.fbid == fbid);
+        if(!player){
+            player = new Player(name, this.players.length, fbid);
+>>>>>>> 4f727c37e4eea66f924e1fd2d530e4c7b5f8b455
             this.players.push(player);
         }
         player.access_token = access_token;
